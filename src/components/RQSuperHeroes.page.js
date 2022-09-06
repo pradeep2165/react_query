@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const RQSuperHeroesPage = () => {
   const fetchSuperHeroes = () => {
-    return axios.get("http://localhost:4000/superheroes1");
+    return axios.get("http://localhost:4000/superheroes");
   };
 
   const { isLoading, data, isError, error } = useQuery("super-heroes", fetchSuperHeroes);
