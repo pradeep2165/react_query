@@ -8,7 +8,7 @@ export const RQSuperHeroesPage = () => {
     return axios.get("http://localhost:4000/superheroes");
   };
 
-  const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, { cacheTime: 5000 });
+  const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, { staleTime: 0 });
 
   console.log(isLoading, isFetching);
   if (isLoading) {
