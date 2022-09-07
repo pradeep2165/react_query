@@ -14,10 +14,15 @@ export const RQSuperHeroesPage = () => {
   const onError = (error) => {
     console.log("perform side effect after encounting error", error);
   };
-
+  //data transform as an array for ui
+  //here used map method but can be use filter method to achive the same
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, {
     onSuccess,
     onError,
+    select: (data) => {
+      const superHeroNames = data.data.map((hero) => hero.name);
+      return superHeroNames;
+    },
   });
 
   // console.log(isLoading, isFetching);
@@ -32,8 +37,12 @@ export const RQSuperHeroesPage = () => {
     <div>
       <h1>RQ SuperHeroes Page</h1>
       <button onClick={refetch}>Fetch Heroes</button>
-      {data?.data.map((hero) => {
+      {/* {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
+      })} */}
+
+      {data.map((heroName) => {
+        return <div key={heroName}>{heroName}</div>;
       })}
     </div>
   );
