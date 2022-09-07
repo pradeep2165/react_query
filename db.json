@@ -44,6 +44,21 @@
       "name": "pradeep3",
       "alterEgo": "blore",
       "id": 9
+    },
+    {
+      "name": "pradeep4",
+      "alterEgo": "bangalore",
+      "id": 10
+    },
+    {
+      "name": "pradeep5",
+      "alterEgo": "bangalore",
+      "id": 11
+    },
+    {
+      "name": "prad",
+      "alterEgo": "blore",
+      "id": 12
     }
   ],
   "friends": [
