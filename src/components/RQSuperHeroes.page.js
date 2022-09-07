@@ -8,7 +8,8 @@ export const RQSuperHeroesPage = () => {
     return axios.get("http://localhost:4000/superheroes");
   };
   //enabled is for stop fetching info and waiting for click event for fetch info
-  const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, {
+  //refetch is for fetching the info
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, {
     enabled: false,
   });
 
@@ -22,6 +23,7 @@ export const RQSuperHeroesPage = () => {
   return (
     <div>
       <h1>RQ SuperHeroes Page</h1>
+      <button onClick={refetch}>Fetch Heroes</button>
       {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
       })}
