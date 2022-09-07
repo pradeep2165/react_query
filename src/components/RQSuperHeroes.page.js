@@ -8,7 +8,10 @@ export const RQSuperHeroesPage = () => {
     return axios.get("http://localhost:4000/superheroes");
   };
 
-  const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, { refetchOnMount: true, refetchOnWindowFocus: true });
+  //refetchInterval: is for refresh continously with the given time interval but it window loses focus
+  const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, {
+    refetchInterval: 2000,
+  });
 
   console.log(isLoading, isFetching);
   if (isLoading) {
