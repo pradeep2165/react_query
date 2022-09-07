@@ -1,12 +1,12 @@
 import React from "react";
-import { useQuery } from "react-query";
-import axios from "axios";
+// import axios from "axios";
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
+import { Link } from "react-router-dom";
 
 export const RQSuperHeroesPage = () => {
-  const fetchSuperHeroes = () => {
-    return axios.get("http://localhost:4000/superheroes");
-  };
+  // const fetchSuperHeroes = () => {
+  //   return axios.get("http://localhost:4000/superheroes");
+  // };
   //callback activity
   const onSuccess = (data) => {
     console.log("perform side effect after data fetching", data);
@@ -29,13 +29,17 @@ export const RQSuperHeroesPage = () => {
     <div>
       <h1>RQ SuperHeroes Page</h1>
       <button onClick={refetch}>Fetch Heroes</button>
-      {/* {data?.data.map((hero) => {
-        return <div key={hero.name}>{hero.name}</div>;
-      })} */}
-
-      {data.map((heroName) => {
-        return <div key={heroName}>{heroName}</div>;
+      {data?.data.map((hero) => {
+        return (
+          <div key={hero.name}>
+            <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+          </div>
+        );
       })}
+
+      {/* {data.map((heroName) => {
+        return <div key={heroName}>{heroName}</div>;
+      })} */}
     </div>
   );
 };
