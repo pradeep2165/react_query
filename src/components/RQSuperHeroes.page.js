@@ -7,14 +7,22 @@ export const RQSuperHeroesPage = () => {
   const fetchSuperHeroes = () => {
     return axios.get("http://localhost:4000/superheroes");
   };
-  //enabled is for stop fetching info and waiting for click event for fetch info
-  //refetch is for fetching the info
+  //callback activity
+  const onSuccess = (data) => {
+    console.log("perform side effect after data fetching", data);
+  };
+  const onError = (error) => {
+    console.log("perform side effect after encounting error", error);
+  };
+
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery("super-heroes", fetchSuperHeroes, {
-    enabled: false,
+    onSuccess,
+    onError,
   });
 
-  console.log(isLoading, isFetching);
-  if (isLoading) {
+  // console.log(isLoading, isFetching);
+
+  if (isLoading || isFetching) {
     return <h2>Loading....</h2>;
   }
   if (isError) {
