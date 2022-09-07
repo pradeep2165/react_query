@@ -7,11 +7,9 @@ export const RQSuperHeroesPage = () => {
   const fetchSuperHeroes = () => {
     return axios.get("http://localhost:4000/superheroes");
   };
-
-  //refetchInterval: is for refresh continously with the given time interval
+  //enabled is for stop fetching info and waiting for click event for fetch info
   const { isLoading, data, isError, error, isFetching } = useQuery("super-heroes", fetchSuperHeroes, {
-    refetchInterval: 2000,
-    refetchIntervalInBackground: true,
+    enabled: false,
   });
 
   console.log(isLoading, isFetching);
